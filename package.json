@@ -1,0 +1,16 @@
+{
+  "name": "node_for_test_folder",
+  "version": "1.0.0",
+  "description": "node for the test folder so node is always here",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "quagga": "^0.12.1"
+  }
+}
