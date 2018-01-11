@@ -4,6 +4,18 @@
 <head>
   <title>Nice image capture button</title>
   <style>
+  #wrapper {
+    text-align: center;
+  }
+
+  input {
+    margin: auto;
+  }
+
+  img {
+    margin: auto;
+  }
+  
   label.cameraButton {
   display: inline-block;
   margin: 1em 0;
@@ -29,11 +41,13 @@ label.cameraButton input[accept*="camera"] {
 </head>
 
 <body>
+  <div id="wrapper">
   <img id="image" src="" style="display:none" height="400">
   <label class="cameraButton">Take a picture
     <input type="file" onchange="showImage.call(this)" accept="image/*;capture=camera">
     <!-- <input type="file" onchange="showImage.call(this)"> -->
   </label>
+  </div>
 
 <script>
   function showImage() {
