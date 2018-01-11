@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Nice image capture button</title>
+  <style>
+  label.cameraButton {
+  display: inline-block;
+  margin: 1em 0;
+
+  /* Styles to make it look like a button */
+  padding: 0.5em;
+  border: 2px solid #666;
+  border-color: #EEE #CCC #CCC #EEE;
+  background-color: #DDD;
+}
+
+/* Look like a clicked/depressed button */
+label.cameraButton:active {
+  border-color: #CCC #EEE #EEE #CCC;
+}
+
+/* This is the part that actually hides the 'Choose file' text box for camera inputs */
+label.cameraButton input[accept*="camera"] {
+  display: none;
+}
+  
+  </style>
+</head>
+
+<body>
+  <img id="image" src="" style="display:none" height="400">
+  <label class="cameraButton">Take a picture
+    <input type="file" onchange="showImage.call(this)" accept="image/*;capture=camera">
+    <!-- <input type="file" onchange="showImage.call(this)"> -->
+  </label>
+
+<script>
+  function showImage() {
+    if(this.files && this.files[0]) {
+      var obj = new FileReader();
+      obj.onload = function(data) {
+        var image = document.getElementById("image");
+        image.src= data.target.result;
+        image.style.display = "block";
+      }
+      obj.readAsDataURL(this.files[0]);
+    }
+  };
+
+
+</script>  
+</body>
+
+</html>
