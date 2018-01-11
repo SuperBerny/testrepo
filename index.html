@@ -19,18 +19,19 @@
     <!-- Div to show the scanner -->
     <div id="scanner-container"></div>
     <input type="button" id="btn" value="Start/Stop the scanner" />
+    <input type="file" id="btn2" accept="image/*">Select image</input>
 
     <!-- Include the image-diff library -->
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
 
     <script>
-        var _scannerIsRunning = false;
+         var _scannerIsRunning = false;
 
         function startScanner() {
             Quagga.init({
                 inputStream: {
                     name: "Live",
-                    type: "LiveStream",
+                    type: "ImageStream",
                     target: document.querySelector('#scanner-container'),
                     constraints: {
                         width: 480,
@@ -65,6 +66,8 @@
                         }
                     }
                 },
+                locate: true,
+                src: '/barcode_image.jpg'
 
             }, function (err) {
                 if (err) {
@@ -111,9 +114,10 @@
 
 
         // Start/stop scanner
-        document.getElementById("btn").addEventListener("click", function () {
+        document.getElementById("btn2").addEventListener("click", function () {
             if (_scannerIsRunning) {
                 Quagga.stop();
+               
             } else {
                 startScanner();
             }
